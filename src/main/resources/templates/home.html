@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to Our Site</title>
+</head>
+<body>
+<h1>Welcome to Our Site</h1>
+
+<div th:if="${user}">
+    <p>Hello, <span th:text="${user.nickname}"></span>!</p>
+    <a th:href="@{/user/profile}">View Profile</a>
+    <a th:href="@{/user/logout}">Logout</a>
+</div>
+
+<div th:unless="${user}">
+    <p>Please login or register to access all features.</p>
+    <a th:href="@{/user/login}">Login</a>
+    <a th:href="@{/user/register}">Register</a>
+</div>
+
+<div>
+    <a th:href="@{/board/list}">View Board</a>
+    <a th:href="@{/board/create}">Create New Post</a>
+</div>
+
+<!-- You can add more content here, such as featured posts, site information, etc. -->
+
+</body>
+</html>

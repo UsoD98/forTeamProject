@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+<h2>User Profile</h2>
+<div>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    <p><strong>Nickname:</strong> <span th:text="${user.nickname}"></span></p>
+    <p><strong>Created At:</strong> <span th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd HH:mm')}"></span></p>
+</div>
+<a th:href="@{/}">Go to Home</a>
+<a th:href="@{/user/logout}">Logout</a>
+</body>
+</html>

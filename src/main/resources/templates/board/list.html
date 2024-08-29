@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Board List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Board List</h1>-->
+<!--<a th:href="@{/board/create}">Create New Post</a>-->
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Writer</th>-->
+<!--        <th>Created At</th>-->
+<!--        <th>Action</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="board : ${boards}">-->
+<!--        <td><a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a></td>-->
+<!--        <td th:text="${board.writerNickname}"></td>-->
+<!--        <td th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd HH:mm')}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="@{/board/{id}/edit(id=${board.id})}">Edit</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+<!--<a th:href="@{/}">Back to Home</a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board List</title>
+</head>
+<body>
+<h1>Board List</h1>
+<a th:href="@{/board/create}">Create New Post</a>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Writer</th>
+        <th>Created At</th>
+        <th>Comments</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${boards}">
+        <td>
+            <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a>
+            <span th:if="${board.commentCount > 0}" th:text="'[' + ${board.commentCount} + ']'"></span>
+        </td>
+        <td th:text="${board.writerNickname}"></td>
+        <td th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${board.commentCount}"></td>
+        <td>
+            <a th:href="@{/board/{id}/edit(id=${board.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
